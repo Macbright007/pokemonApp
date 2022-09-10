@@ -1,5 +1,5 @@
 import Header from './Header'
-import "./pokmonStyles/Pokemon.css"
+import "./pagesStyles/Pokemon.css"
 
 const Pokemon = () => {
   return (

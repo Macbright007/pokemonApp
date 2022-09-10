@@ -1,14 +1,14 @@
 import Header from './Header'
 import React from 'react'
 import Nav from './Nav'
-import PokemonList from './PokemonList'
+import PokemonList from '../pages/PokemonList'
 
-const Main = () => {
+const Main = ({pokemons}) => {
   return (
     <div className='main__container'>
         <Header />
         <Nav />
-        <PokemonList />
+        <PokemonList pokemons={pokemons}/>
     </div>
   )
 }

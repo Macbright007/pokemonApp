@@ -1,5 +1,5 @@
 import { MdArrowBackIosNew } from "react-icons/md";
-import "./pokmonStyles/Header.css"
+import "../components/pages/pagesStyles/Header.css";
 import pokemon from "../../images/pokemon.svg"
 import vector from "../../images/Vector.svg"
 
