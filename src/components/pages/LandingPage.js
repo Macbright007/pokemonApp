@@ -1,19 +1,24 @@
 import React from "react";
-import "../components/pages/pagesStyles/LandingPage.css";
-import logo from "../images/logo.svg";
+import "./pagesStyles/LandingPage.css";
+import logo from "../../images/logo.svg";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
     <div className="background">
-      <div className="cont">
-        <img src={logo} alt="logo" />
-        <div className="content">
-          <h3>pokemon</h3>
-          <h1>pokedex</h1>
+      <div>
+        <div className="cont">
+          <img src={logo} alt="logo" />
+          <div className="content">
+            <h3>pokemon</h3>
+            <h1>pokedex</h1>
+          </div>
         </div>
-      </div>
 
-      {/* <button className="btn">Next Page</button> */}
+        <Link to="/main">
+          <button className="btn">Load Pokemons</button>
+        </Link>
+      </div>
     </div>
   );
 };

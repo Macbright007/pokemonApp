@@ -20,6 +20,7 @@ const PokemonCard = ({ pokemon, key, isloading }) => {
 
 
   return (
+   
     <div className="card__container" key={key}>
       {/* {!isloading ? (<Skeleton height={100} width= {100} style={{backgroundColor: '#D3D3D3'}} />) : 
         ( */}
