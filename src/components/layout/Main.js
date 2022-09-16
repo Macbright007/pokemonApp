@@ -3,12 +3,12 @@ import React from 'react'
 import Nav from './Nav'
 import PokemonList from '../pages/PokemonList'
 
-const Main = ({pokemons, isloading}) => {
+const Main = () => {
   return (
     <div className='main__container'>
         <Header />
         <Nav />
-        <PokemonList pokemons={pokemons} isloading={isloading} />
+        <PokemonList />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import "./pagesStyles/PokemonCard.css"
 import { ColorExtractor } from "image-color-extraction";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 // import Skeleton from 'react-loading-skeleton'
 // import 'react-loading-skeleton/dist/skeleton.css'
 // import CardSkeleton from "../layout/CardSkeleton";
@@ -21,7 +22,7 @@ const PokemonCard = ({ pokemon, key, isloading }) => {
 
   return (
    
-    <div className="card__container" key={key}>
+      <Link to={`/profile/${pokemon.id}`} style={{ textDecoration: "none" }} className="card__container" key={key}>
       {/* {!isloading ? (<Skeleton height={100} width= {100} style={{backgroundColor: '#D3D3D3'}} />) : 
         ( */}
           <div className="img__cont" style={{ 
@@ -36,7 +37,7 @@ const PokemonCard = ({ pokemon, key, isloading }) => {
       <h5>#00{pokemon.id}</h5>
       <h1>{pokemon.name}</h1>
       <p>{pokemon.types[0].type.name}</p>
-    </div>
+      </Link>
   );
 };
 

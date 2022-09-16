@@ -3,10 +3,12 @@ import "./pagesStyles/PokemonList.css";
 // import CardSkeleton from "../layout/CardSkeleton";
 // import Skeleton from 'react-loading-skeleton'
 import "react-loading-skeleton/dist/skeleton.css";
-// import { Link } from "react-router-dom";
+import { useContext } from "react";
+import PokemonContext from "../../contexts/PokemonContext"
 
 
-const PokemonList = ({ pokemons, isloading }) => {
+const PokemonList = () => {
+  const { pokemons, isloading } = useContext(PokemonContext)
   return (
     <div className="pokemonlist__cont">
       {/* {isloading && <CardSkeleton cards={20} />} */}
@@ -15,13 +17,11 @@ const PokemonList = ({ pokemons, isloading }) => {
       {/* {!isloading && */}
       {pokemons.map((pokemon) => {
         return (
-          // <Link to="/profile" style={{ textDecoration: "none" }}>
-            <PokemonCard
-              pokemon={pokemon}
-              key={pokemon.id}
-              isloading={isloading}
-            />
-          // </Link>
+          <PokemonCard
+            pokemon={pokemon}
+            key={pokemon.id}
+            isloading={isloading}
+          />
         );
       })}
     </div>
