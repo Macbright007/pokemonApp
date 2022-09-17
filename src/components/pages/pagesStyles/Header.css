@@ -1,3 +1,6 @@
+.header__cont{
+    height: 47vh;
+}
 .top__nav{
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
     padding: 5px;
@@ -12,6 +15,7 @@
 .main__nav h1{
     font-family: 'Noto Sans';
     font-style: normal;
+    text-transform: capitalize;
     font-weight: 700;
     font-size: 50px;
     line-height: 44px;
@@ -20,6 +24,7 @@
 .main__nav p{
     font-family: 'Noto Sans';
     font-style: normal;
+    text-transform: capitalize;
     font-weight: 400;
     font-size: 25px;
     line-height: 22px;
@@ -27,11 +32,10 @@
     color: #161A33;
 }
 .middle__nav{
-    /* border: 2px solid black; */
     box-sizing: border-box;
     width: 100%;
     max-width: 600px;
-    margin: auto;
+    margin: -40px auto;
     display: flex;
     justify-content: space-between;
 }
@@ -46,25 +50,25 @@
 }
 .image__side{
     position: relative;
-    /* border: 2px solid blue; */
     width: 30%;
 }
 .image__side, .img1{
-    height: 30vh;
+    height: 147px;
     position: absolute;
     right: 220px;
     z-index: 1;
-    top: 88px;
+    top: 110px;
 }
 .image__side, .img2{
     position: absolute;
     right: 230px;
-    height: 35vh;
-    top: 52px;
+    height: 157px;
+    top: 77px;
 }
 
 /* media query */
 @media (min-width: 760px) and (max-width: 1200px) {
+    
     .main__nav h1{
         font-size: 50px;
         margin-left: 15px;
@@ -91,6 +95,9 @@
     }
 }
 @media (min-width: 300px) and (max-width: 450px) {
+    .header__cont{
+        height: 37vh;
+    }
     .main__nav h1{
         font-size: 32px;
         margin-left: 15px;
@@ -104,15 +111,14 @@
         margin-left: 15px;
     }
     .image__side, .img1{
-        width: 176px;
-        height: 155px;
-        left: 70px;
-        top: 90px;
+        height: 165px;
+        left: 90px;
+        top: 80px;
     }
     .image__side, .img2{
         width: 186px;
         height: 190px;
-        top: 50px;
+        top: 29px;
         left: 100px;
     }
 }

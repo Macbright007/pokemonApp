@@ -34,6 +34,8 @@ export const PokemonProvider = ({children}) => {
         fetchPokemons();
     }, []);
 
+    // console.log(pokemons)
+
     return (
         <PokemonContext.Provider value={{pokemons, isloading, addToFavorite}}>
             {children}

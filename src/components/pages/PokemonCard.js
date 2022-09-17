@@ -34,8 +34,8 @@ const PokemonCard = ({ pokemon, key, isloading }) => {
       } */}
       
 
-      <h5>#00{pokemon.id}</h5>
-      <h1>{pokemon.name}</h1>
+      <h5>#00{pokemon?.id}</h5>
+      <h1>{pokemon?.name}</h1>
       <p>{pokemon.types[0].type.name}</p>
       </Link>
   );

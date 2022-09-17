@@ -1,22 +1,24 @@
 import Header from "./Header";
 import "./pagesStyles/Pokemon.css";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import { API_url } from "../../contexts/PokemonContext";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import PokemonContext from "../../contexts/PokemonContext"
+import PokemonFeatures from "./PokemonFeatures";
+
+
 
 const PokemonProfile = () => {
-  // const [details, setDetails] = useState();
+  const { pokemons} = useContext(PokemonContext)
+  const params = useParams()
 
-  // axios.get(`${API_url}${id}`)
-  //   .then((res) => console.log(res))
-  //   // .then((data) => {
-  //   //   setPosts(data);
-  //   // })
-  //   // .catch(console.log("failed to fetch data"));
+  const pokemon = pokemons.find(pok => pok.id === Number(params.id))
+
+  console.log('ppl',pokemon)
 
   return (
     <div className="container">
-      <Header />
+      <Header pokemon={pokemon} />
+      <PokemonFeatures pokemon={pokemon}/>
     </div>
   );
 };

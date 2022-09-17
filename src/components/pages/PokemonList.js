@@ -19,7 +19,7 @@ const PokemonList = () => {
         return (
           <PokemonCard
             pokemon={pokemon}
-            key={pokemon.id}
+            key={pokemon?.id}
             isloading={isloading}
           />
         );
