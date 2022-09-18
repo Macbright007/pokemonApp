@@ -1,0 +1,41 @@
+.stat__cont{
+    border: 10px solid rgba(154, 153, 153, 0.201);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.stats{
+    margin: 40px 0;
+}
+.stats p{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #6B6B6B;
+}
+.inner__stat{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #161A33;
+    margin-left: 10px;
+}
+.progress_cont{
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+}
+@media (min-width: 300px) and (max-width: 450px) {
+    .stat__cont>h1{
+        margin-right: -60px;
+    }
+    .stats{
+        margin: 40px 0;
+    }
+}
