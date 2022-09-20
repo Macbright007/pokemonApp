@@ -69,7 +69,9 @@
 
 /* media query */
 @media (min-width: 760px) and (max-width: 1200px) {
-    
+    .header__cont{
+        height: 40vh;
+    }
     .main__nav h1{
         font-size: 50px;
         margin-left: 15px;
@@ -95,6 +97,7 @@
         left: 230px;
     }
 }
+
 @media (min-width: 300px) and (max-width: 450px) {
     .header__cont{
         height: 37vh;

@@ -10,7 +10,7 @@ const Header = ({pokemon}) => {
   return (
     <div className="header__cont">
         <div className="top__nav">
-        <Link to="/main">
+        <Link to="/main/pokemon-list">
           <MdArrowBackIosNew
             style={{ fontSize: 30, color: "rgba(0, 0, 0, 0.87)" }}
           />

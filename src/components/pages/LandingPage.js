@@ -15,7 +15,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <Link to="/main">
+        <Link to="/main/pokemon-list">
           <button className="btn">Load Pokemons</button>
         </Link>
       </div>

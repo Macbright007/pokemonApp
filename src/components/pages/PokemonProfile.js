@@ -14,7 +14,7 @@ const PokemonProfile = () => {
 
   const pokemon = pokemons.find(pok => pok.id === Number(params.id))
 
-  console.log('ppl',pokemon)
+  // console.log('ppl',pokemon)
 
   return (
     <div className="container">

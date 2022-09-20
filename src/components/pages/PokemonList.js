@@ -1,7 +1,6 @@
 import PokemonCard from "./PokemonCard";
 import "./pagesStyles/PokemonList.css";
-// import CardSkeleton from "../layout/CardSkeleton";
-// import Skeleton from 'react-loading-skeleton'
+import CardSkeleton from "../layout/CardSkeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useContext } from "react";
 import PokemonContext from "../../contexts/PokemonContext"
@@ -11,15 +10,13 @@ const PokemonList = () => {
   const { pokemons, isloading } = useContext(PokemonContext)
   return (
     <div className="pokemonlist__cont">
-      {/* {isloading && <CardSkeleton cards={20} />} */}
-      {/* {isloading && <Skeleton />} */}
-
-      {/* {!isloading && */}
+      {isloading && !pokemons.length && <CardSkeleton cards={20} />}
+    
       {pokemons.map((pokemon) => {
         return (
           <PokemonCard
             pokemon={pokemon}
-            key={pokemon?.id}
+            key={pokemon.id}
             isloading={isloading}
           />
         );

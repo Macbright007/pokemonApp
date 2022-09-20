@@ -1,7 +1,11 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import "./pagesStyles/PokemonStat.css"
+import PokemonContext from "../../contexts/PokemonContext";
+import { useContext } from "react";
 
 const PokemonProgressBar = ({pokemon}) => {
+  const {addToFavorite} = useContext(PokemonContext)
+
   return (
     <div className="progress_cont">
       <div className="stats">
@@ -82,6 +86,7 @@ const PokemonProgressBar = ({pokemon}) => {
           isLabelVisible={false}
         />
       </div>
+      <button className="btn__btn" onClick={() => addToFavorite(pokemon)}>Mark as favourite</button>
     </div>
   );
 };

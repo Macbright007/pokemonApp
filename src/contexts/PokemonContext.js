@@ -7,11 +7,13 @@ const PokemonContext = createContext();
 
 export const PokemonProvider = ({children}) => {
     const [pokemons, setPokemons] = useState([]);
-    const [favouritePokemon, setFavouritePokemon] = useState([])
+    // const [favouritePokemon, setFavouritePokemon] = useState([])
     const [isloading, setIsLoading] = useState(false);
 
     const fetchPokemons = async () => {
-        const res = await axios.get(API_url);
+        setIsLoading(true);
+
+        const res = await axios.get(`${API_url}?offset=${offset}&limit=${limit}`);
         getAllPokemons(res.data.results);
     };
 
@@ -22,22 +24,46 @@ export const PokemonProvider = ({children}) => {
             state = [...state, results.data];
             return state;
         });
-        setIsLoading(true);
-        });
+        setIsLoading(false);
+        }); 
     };
 
-    const addToFavorite = (pokemons) => {
-        setFavouritePokemon((prevState) => [...prevState, {pokemons}]);
+    // function to add pokemon to favourite page
+    const addToFavorite = (pokemon) => {
+        // setFavouritePokemon((prevState) => [...prevState, pokemon]);
+        localStorage.setItem('favPokemons', JSON.stringify([...getPokemonsFromStorage(), pokemon]))
     }
 
-    useEffect(() => {
+// function to get pokemon from localStorage
+    const getPokemonsFromStorage = () => {
+        const favPokemons = localStorage.getItem('favPokemons')
+        const parsedPokemons = JSON.parse(favPokemons)
+        return Array.isArray(parsedPokemons) ? parsedPokemons : []
+      }
+
+
+    let offset = 0;
+    const limit = 20;
+
+       useEffect(() => {
         fetchPokemons();
+        window.addEventListener("scroll", handleScroll); // attaching scroll event listener
     }, []);
 
     // console.log(pokemons)
 
+        //function to handle scroll
+        const handleScroll = () => {
+            let userScrollHeight = window.innerHeight + window.scrollY;
+            let windowBottomHeight = document.documentElement.offsetHeight;
+            if (userScrollHeight >= windowBottomHeight) {
+                fetchPokemons();
+                offset+=20;
+            }
+        };
+
     return (
-        <PokemonContext.Provider value={{pokemons, isloading, addToFavorite}}>
+        <PokemonContext.Provider value={{pokemons, isloading, addToFavorite, favouritePokemon:getPokemonsFromStorage()}}>
             {children}
         </PokemonContext.Provider>
     );

@@ -4,17 +4,18 @@ import PokemonContext from "../../contexts/PokemonContext";
 import { useContext } from "react";
 
 const Nav = () => {
-const { pokemons } = useContext(PokemonContext)
+  const {favouritePokemon} = useContext(PokemonContext)
 
+  console.log("meeee", favouritePokemon)
   return (
     // <div className='nav__container'>
     <div className="nav__content">
-      <Link to="/main" style={{textDecoration: "none"}}>
+      <Link to="/main/pokemon-list" style={{textDecoration: "none"}}>
         <h1>All Pokemons</h1>
       </Link>
-      <Link to="/favourite" style={{textDecoration: "none"}}>
+      <Link to="/main/favourite" style={{textDecoration: "none"}}>
         <h2>
-          Favourites <span>{pokemons.length}</span>
+          Favourites <span>{favouritePokemon.length}</span>
         </h2>
       </Link>
     </div>
