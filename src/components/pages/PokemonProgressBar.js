@@ -1,11 +1,13 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import "./pagesStyles/PokemonStat.css"
+import "./pagesStyles/PokemonStat.css";
 import PokemonContext from "../../contexts/PokemonContext";
 import { useContext } from "react";
 
-const PokemonProgressBar = ({pokemon}) => {
-  const {addToFavorite} = useContext(PokemonContext)
-
+const PokemonProgressBar = ({ pokemon }) => {
+  const { addToFavorite, favouritePokemon, removeFromFavourite } = useContext(PokemonContext);
+  const isFav = favouritePokemon.filter(fav => fav.id === pokemon.id).length > 0
+  // favouritePokemon.findIndex(fav => fav.id === pokemon.id) > -1
+  console.log('isFav', isFav)
   return (
     <div className="progress_cont">
       <div className="stats">
@@ -15,7 +17,7 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[0].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#CD2873"
           isLabelVisible={false}
@@ -28,7 +30,7 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[1].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#CD2873"
           isLabelVisible={false}
@@ -41,7 +43,7 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[2].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#CD2873"
           isLabelVisible={false}
@@ -54,7 +56,7 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[3].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#EEC218"
           isLabelVisible={false}
@@ -67,7 +69,7 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[4].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#EEC218"
           isLabelVisible={false}
@@ -80,13 +82,21 @@ const PokemonProgressBar = ({pokemon}) => {
         </p>
         <ProgressBar
           completed={pokemon.stats[5].base_stat}
-          width={350}
+          width="350"
           height={8}
           bgColor="#CD2873"
           isLabelVisible={false}
         />
       </div>
-      <button className="btn__btn" onClick={() => addToFavorite(pokemon)}>Mark as favourite</button>
+      <div className="btn__cont">
+        {!isFav ? (
+          <button className="btn__btn" onClick={() => addToFavorite(pokemon)}>
+            Mark as favourites
+          </button>
+         ) : (
+          <button className="btnn" onClick={() => removeFromFavourite(pokemon.id)} >Remove from favourites</button>
+        )}
+      </div>
     </div>
   );
 };

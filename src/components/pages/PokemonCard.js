@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 
 
-const PokemonCard = ({ pokemon, key, isloading }) => {
+const PokemonCard = ({ pokemon, isloading }) => {
   const [imgColor, setImgColor] = useState({});
 
   const extractor = new ColorExtractor();
@@ -22,7 +22,7 @@ const PokemonCard = ({ pokemon, key, isloading }) => {
 
   return (
    
-      <Link to={`/profile/${pokemon.id}`} style={{ textDecoration: "none" }} className="card__container" key={key}>
+      <Link to={`/profile/${pokemon.id}`} style={{ textDecoration: "none" }} className="card__container">
       {/* {!isloading ? (<Skeleton height={100} width= {100} style={{backgroundColor: '#D3D3D3'}} />) : 
         ( */}
           <div className="img__cont" style={{ 

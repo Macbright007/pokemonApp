@@ -1,18 +1,23 @@
 .header__cont{
-    height: 47vh;
+    height: 47%;
     background: #F3F9EF;
+    width: 100%;
+}
+.header__wrapper{
+    /* border: 2px solid black; */
+    padding: 20px;
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
 }
 .top__nav{
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
-    padding: 5px;
-   
+    padding: 5px;   
 }
-.main__nav{
-    /* border: 2px solid black; */
+/* .main__nav{
+    border: 2px solid black;
     width: 100%;
-    max-width: 600px;
-    margin: auto;
-}
+} */
 .main__nav h1{
     font-family: 'Noto Sans';
     font-style: normal;
@@ -20,6 +25,7 @@
     font-weight: 700;
     font-size: 50px;
     line-height: 44px;
+    margin-top: -10px;
     color: #161A33;
 }
 .main__nav p{
@@ -33,12 +39,12 @@
     color: #161A33;
 }
 .middle__nav{
+    /* border: 2px solid blue; */
     box-sizing: border-box;
     width: 100%;
-    max-width: 600px;
-    margin: -40px auto;
     display: flex;
     justify-content: space-between;
+    /* position: relative; */
 }
 .middle__nav h3{
     font-family: 'Noto Sans';
@@ -47,24 +53,28 @@
     font-size: 25px;
     line-height: 22px;
     color: #161A33;
-    margin-top: 8rem;
+    margin-top: 7rem;
 }
 .image__side{
     position: relative;
-    width: 30%;
+    /* border: 2px solid red; */
+    /* position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1; */
 }
 .image__side, .img1{
     height: 147px;
     position: absolute;
     right: 220px;
     z-index: 1;
-    top: 110px;
+    top: 120px; 
 }
 .image__side, .img2{
     position: absolute;
     right: 230px;
+    top: 90px;
     height: 157px;
-    top: 77px;
 }
 
 /* media query */
@@ -86,7 +96,7 @@
     }
     .image__side, .img1{
         width: 176px;
-        height: 190px;
+        height: 150px;
         left: 200px;
         top: 100px;
     }
@@ -115,14 +125,14 @@
         margin-left: 15px;
     }
     .image__side, .img1{
-        height: 165px;
+        height: 150px;
         left: 90px;
-        top: 80px;
+        top: 70px;
     }
     .image__side, .img2{
-        width: 186px;
-        height: 190px;
-        top: 29px;
+        width: 155px;
+        height: 150px;
+        top: 53px;
         left: 100px;
     }
 }

@@ -1,72 +1,92 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+
 export const API_url = "https://pokeapi.co/api/v2/pokemon/";
 
 const PokemonContext = createContext();
 
-export const PokemonProvider = ({children}) => {
-    const [pokemons, setPokemons] = useState([]);
-    // const [favouritePokemon, setFavouritePokemon] = useState([])
-    const [isloading, setIsLoading] = useState(false);
+  
+  // function to get pokemon from localStorage
+  const getPokemonsFromStorage = () => {
+    const favPokemons = localStorage.getItem("favPokemons");
+    const parsedPokemons = favPokemons ? JSON.parse(favPokemons) : favPokemons;
+    return Array.isArray(parsedPokemons) ? parsedPokemons : [];
+  };
 
-    const fetchPokemons = async () => {
-        setIsLoading(true);
-
-        const res = await axios.get(`${API_url}?offset=${offset}&limit=${limit}`);
-        getAllPokemons(res.data.results);
-    };
-
-    const getAllPokemons = async (res) => {
-        res.map(async (item) => {
-        const results = await axios.get(item.url);
-        setPokemons((state) => {
-            state = [...state, results.data];
-            return state;
-        });
-        setIsLoading(false);
-        }); 
-    };
-
-    // function to add pokemon to favourite page
-    const addToFavorite = (pokemon) => {
-        // setFavouritePokemon((prevState) => [...prevState, pokemon]);
-        localStorage.setItem('favPokemons', JSON.stringify([...getPokemonsFromStorage(), pokemon]))
-    }
-
-// function to get pokemon from localStorage
-    const getPokemonsFromStorage = () => {
-        const favPokemons = localStorage.getItem('favPokemons')
-        const parsedPokemons = JSON.parse(favPokemons)
-        return Array.isArray(parsedPokemons) ? parsedPokemons : []
-      }
+export const PokemonProvider = ({ children }) => {
+  const [pokemons, setPokemons] = useState([]);
+  const [favouritePokemon, setFavouritePokemon] = useState(getPokemonsFromStorage())
+  const [isloading, setIsLoading] = useState(false);
+  const [pageNum, SetPageNum] = useState(1);
 
 
-    let offset = 0;
-    const limit = 20;
+  const fetchPokemons = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${API_url}?offset=${offset}&limit=${limit}`);
+    offset+=20;
+    getAllPokemons(res.data.results);
+  };
 
-       useEffect(() => {
-        fetchPokemons();
-        window.addEventListener("scroll", handleScroll); // attaching scroll event listener
-    }, []);
+  const getAllPokemons = async (res) => {
+    res.map(async (item) => {
+      const results = await axios.get(item.url);
+      setPokemons((state) => {
+        state = [...state, results.data];
+        return state;
+      });
+      setIsLoading(false);
+    });
+  };
 
-    // console.log(pokemons)
+  // function to add pokemon to favourite page
+  const addToFavorite = (pokemon) => {
+    setFavouritePokemon((prevState) => [...prevState, pokemon]);
+   
+  };
 
-        //function to handle scroll
-        const handleScroll = () => {
-            let userScrollHeight = window.innerHeight + window.scrollY;
-            let windowBottomHeight = document.documentElement.offsetHeight;
-            if (userScrollHeight >= windowBottomHeight) {
-                fetchPokemons();
-                offset+=20;
-            }
-        };
-
-    return (
-        <PokemonContext.Provider value={{pokemons, isloading, addToFavorite, favouritePokemon:getPokemonsFromStorage()}}>
-            {children}
-        </PokemonContext.Provider>
+  useEffect(() => {
+    localStorage.setItem(
+      "favPokemons",
+      JSON.stringify(favouritePokemon)
     );
-}
+  }, [favouritePokemon])
+
+  // function to remove pokemon from favourite page
+  const removeFromFavourite = (pokemonId) => {
+    setFavouritePokemon(favouritePokemon.filter(fav => fav.id !== pokemonId))
+  };
+
+  let offset = 0;
+  const limit = 20;
+
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
+
+  //function to handle scroll
+  const handleScroll = (morecontent) => {
+    // const currentPages = morecontent[0];
+    // if (currentPages.isIntersecting) {
+    //   SetPageNum((pageNum) => pageNum + 1);
+    // }
+    fetchPokemons();
+  };
+
+  return (
+    <PokemonContext.Provider
+      value={{
+        pokemons,
+        isloading,
+        addToFavorite,
+        removeFromFavourite,
+        favouritePokemon,
+        handleScroll
+      }}
+    >
+      {children}
+    </PokemonContext.Provider>
+  );
+};
 
 export default PokemonContext;

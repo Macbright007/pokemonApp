@@ -1,7 +1,7 @@
 .feature__cont{
     display: flex;
-    justify-content: space-around;
-    max-width: 600px;
+    justify-content: space-between;
+    max-width: 500px;
     margin: auto;
 }
 .features p{
