@@ -20,3 +20,16 @@
     line-height: 21px;
     color: #161A33;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .feature__cont{
+        /* border: 2px solid red; */
+        width: 90%;
+    }
+    .features p{
+        font-size: 18px;
+    }
+    .features h3{
+        font-size: 16px;
+    }
+}

@@ -13,6 +13,13 @@
 
 @media (min-width: 300px) and (max-width: 450px) {
     .pokemonlist__cont{
+        position: relative;
+        left: -8px;
+    }
+}
+@media (min-width: 450px) and (max-width: 815px) {
+    .pokemonlist__cont{
         grid-template-columns: repeat(3, 1fr);
+        /* background-color: red; */
     }
 }

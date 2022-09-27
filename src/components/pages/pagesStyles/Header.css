@@ -7,7 +7,7 @@
     /* border: 2px solid black; */
     padding: 20px;
     width: 100%;
-    max-width: 550px;
+    max-width: 530px;
     margin: auto;
 }
 .top__nav{
@@ -132,7 +132,7 @@
     .image__side, .img2{
         width: 155px;
         height: 150px;
-        top: 53px;
+        top: 44px;
         left: 100px;
     }
 }

@@ -5,12 +5,18 @@
     border-right: 0;
 }
 .stat__wrapper{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
+    width: 100%;
     max-width: 500px;
     margin: auto;
 }
 .stats{
-    margin: 40px 0;
+    margin: 30px 0;
+    /* border: 2px solid black; */
+}
+.prog__bar{
+    /* border: 2px solid blue; */
+    margin: 25px 0 2px;
 }
 .stats p{
     font-family: 'Noto Sans';
@@ -80,18 +86,23 @@
 }
 
 @media (min-width: 300px) and (max-width: 450px) {
-    .stat__cont>h1{
-        margin-left: 0.7rem;
-    }
     .stats{
-        margin: 60px 0;
+        margin: 40px 0;
+    }
+    .stat__wrapper{
+        padding: 0 10px;
+    }
+    .prog__bar{
+        /* border: 2px solid green; */
+        width: 100%;
+        max-width: 350px;
     }
     .stats p{
         margin-top: 20px;
     }
     .btn__cont{
-        left: 145px;
-        top: 400px;
+        left: 150px;
+        top: 380px;
     }
     .btn__btn{
         top: 250px;

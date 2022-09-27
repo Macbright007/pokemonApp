@@ -82,7 +82,7 @@
     .card__container{
       max-width: 110px;
       height: 25vh;
-      margin-top: 10px;
+      margin-right: 4px;
     }
     .card__container h5,p{
         font-size: 12px;
