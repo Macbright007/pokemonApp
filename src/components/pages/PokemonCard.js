@@ -28,7 +28,7 @@ const PokemonCard = ({ pokemon, isloading }) => {
           <div className="img__cont" style={{ 
             backgroundColor: imgColor,
             }}> 
-            <img src={pokemon.sprites.front_default} alt="logo" />
+            <img src={pokemon.sprites.other.dream_world.front_default} alt="logo" />
           </div>
         {/* )
       } */}

@@ -23,7 +23,7 @@ const Header = ({ pokemon }) => {
           <div className="image__side">
             <img
               className="img1"
-              src={pokemon.sprites.front_default}
+              src={pokemon.sprites.other.dream_world.front_default}
               alt="pic"
             />
             <img className="img2" src={vector} alt="pic" />

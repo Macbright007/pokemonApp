@@ -33,7 +33,9 @@ export const PokemonProvider = ({ children }) => {
       const results = await axios.get(item.url);
       setPokemons((state) => {
         state = [...state, results.data];
+        // state.sort((a,b) => a.id > b.id ? 1 : -1)
         return state;
+        // return state.sort((a,b) =>  a.id - b.id);
       });
       setIsLoading(false);
     });
